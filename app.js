@@ -26,9 +26,22 @@ function calculateResults(e) {
     DtotalPayment.value = (monthly*calculatedPayments).toFixed(2);
     DtotalInterest.value = ((monthly * calculatedPayments) - principal.toFixed(2))
   } else {
-    console.log("Wrong!!!!!!")
+    showError('Please check your numbers')
   }
 
-  console.log('calculating')
   e.preventDefault()
+}
+
+// Error display
+
+function showError(error) {
+  const errorDIv = document.createElement('div');
+  const card = document.querySelector('.card');
+  const heading = document.querySelector('.heading');
+
+  errorDIv.className = 'alert alert-danger';
+  errorDIv.appendChild(document.createTextNode(error))
+  card.insertBefore(errorDIv, heading);
+
+  
 }
