@@ -38,13 +38,16 @@ function calculateResults() {
 
     document.getElementById('loading').style.display = 'none';
   } else {
-    showError('Please check your numbers')
+    showError('Please check your numbers');
   }
 }
 
 // Error display
 
 function showError(error) {
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('loading').style.display = 'none';
+
   const errorDIv = document.createElement('div');
   const card = document.querySelector('.card');
   const heading = document.querySelector('.heading');
