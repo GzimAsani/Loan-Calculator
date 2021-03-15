@@ -1,8 +1,16 @@
-document.getElementById('loan-form').addEventListener('submit', calculateResults);
+document.getElementById('loan-form').addEventListener('submit', function(e) {
+
+  document.getElementById('results').style.display = 'none';
+  document.getElementById('loading').style.display = 'block';
+
+  setTimeout(calculateResults, 2000)
+
+  e.preventDefault()
+});
 
 
 
-function calculateResults(e) {
+function calculateResults() {
 
 
   const Damount = document.getElementById('amount');
@@ -25,11 +33,13 @@ function calculateResults(e) {
     DmonthlyPayment.value = monthly.toFixed(2);
     DtotalPayment.value = (monthly*calculatedPayments).toFixed(2);
     DtotalInterest.value = ((monthly * calculatedPayments) - principal.toFixed(2))
+
+    document.getElementById('results').style.display = 'block';
+
+    document.getElementById('loading').style.display = 'none';
   } else {
     showError('Please check your numbers')
   }
-
-  e.preventDefault()
 }
 
 // Error display
